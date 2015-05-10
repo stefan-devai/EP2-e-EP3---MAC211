@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include "defs.h"
 
-barco rema_barco(char** mapa, int M, int N, barco b0) {
+//retorna o status do jogo (rodando = 1, game over = 0);
+int rema_barco(char** mapa, int M, int N, barco* b0) {
 	char movimento;
-	int movimento_atualizado = 0; //variável booleana
+	int movimento_atualizado = 0; //variável booleana;
 
 	mapa[b0.barco_linha][b0.barco_coluna] = 'T';
 
@@ -54,7 +55,9 @@ barco rema_barco(char** mapa, int M, int N, barco b0) {
 			scanf("%c", &movimento);
 		}
 	}
-
+	if (mapa[b0.barco_linha][b0.barco_coluna] == 'S' ||  mapa[b0.barco_linha][b0.barco_coluna] == 'D' ||
+		mapa[b0.barco_linha][b0.barco_coluna] == 'C' || mapa[b0.barco_linha][b0.barco_coluna] == 'P' ||
+		mapa[b0.barco_linha][b0.barco_coluna] == 'H') return 0; //houve colisão
 	mapa[b0.barco_linha][b0.barco_coluna] = 'B';
-	return b0;
+	return 1;
 }
