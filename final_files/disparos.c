@@ -61,6 +61,7 @@ int identifica_alvo_atingido(char** mapa, int M, int N, tiro t) {
 		 mapa[t.tiro_linha][t.tiro_coluna] = '!';
 		 return 0;
 	}
+	else return 0;
 }
 
 void proxima_posicao(int M, int N, tiro t, int *l, int *c, int *contador) {
