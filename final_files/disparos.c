@@ -23,17 +23,44 @@ void dispara_tiros(char** mapa, int M, int N, const char *dir_do_arquivo) {
 	escreve_mapa_arquivo(dir_do_arquivo, mapa, M, N);
 }
 
-void identifica_alvo_atingido(char** mapa, int M, int N, tiro t) {
+int identifica_alvo_atingido(char** mapa, int M, int N, tiro t) {
 	char c = mapa[t.tiro_linha][t.tiro_coluna];
-	if(c == 'D') afunda_destroyer(char** mapa, int M, int N, tiro t);
-	if(c == 'P') afunda_portaaviao(char** mapa, int M, int N, tiro t);
-	if(c == 'C') afunda_cruzador(char** mapa, int M, int N, tiro t);
-	if(c == 'H') afunda_hidroaviao(char** mapa, int M, int N, tiro t);
-	if(c == 'S') mapa[t.tiro_linha][t.tiro_coluna] = '*';
-	if(c == '.') mapa[t.tiro_linha][t.tiro_coluna] = '=';
-	if(c == ' ') mapa[t.tiro_linha][t.tiro_coluna] = '=';
-	if(c == 'T') mapa[t.tiro_linha][t.tiro_coluna] = '+';
-	if(c == 'B') mapa[t.tiro_linha][t.tiro_coluna] = '!';
+	if(c == 'D'){
+		 afunda_destroyer(char** mapa, int M, int N, tiro t);
+		 return 1;
+	}
+	else if(c == 'P'){
+		 afunda_portaaviao(char** mapa, int M, int N, tiro t);
+		 return 1;
+	}		 
+	else if(c == 'C'){ 
+		afunda_cruzador(char** mapa, int M, int N, tiro t);
+		 return 1;
+	}
+	else if(c == 'H'){ 
+		afunda_hidroaviao(char** mapa, int M, int N, tiro t);
+		 return 1;
+	}
+	else if(c == 'S'){
+		 mapa[t.tiro_linha][t.tiro_coluna] = '*';
+		 return 1;
+	}
+	else if(c == '.'){ 
+		mapa[t.tiro_linha][t.tiro_coluna] = '=';
+		 return 1;
+	}
+	else if(c == ' '){
+		mapa[t.tiro_linha][t.tiro_coluna] = '=';
+		 return 1;
+	}
+	else if(c == 'T'){
+		mapa[t.tiro_linha][t.tiro_coluna] = '+';
+		return 1;
+	}
+	else if(c == 'B'){
+		 mapa[t.tiro_linha][t.tiro_coluna] = '!';
+		 return 0;
+	}
 }
 
 void proxima_posicao(int M, int N, tiro t, int *l, int *c, int *contador) {
