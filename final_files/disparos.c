@@ -12,7 +12,7 @@ tiro coordenadas_tiro(char** mapa, int M, int N) { //a função não utiliza a p
 	return t;
 }
 
-void dispara_tiros(char** mapa, int M, int N, FILE* f) {
+void dispara_tiros(char** mapa, int M, int N, const char *dir_do_arquivo) {
 	tiro t;
 	int i;
 	for (i = 0; i < 3; i++) {
@@ -20,7 +20,7 @@ void dispara_tiros(char** mapa, int M, int N, FILE* f) {
 		identifica_alvo_atingido(mapa, M, N, t);
 	}
 	escreve_mapa_tela(mapa, M, N);
-	escreve_mapa_arquivo(mapa, M, N, f);
+	escreve_mapa_arquivo(dir_do_arquivo, mapa, M, N);
 }
 
 void identifica_alvo_atingido(char** mapa, int M, int N, tiro t) {
